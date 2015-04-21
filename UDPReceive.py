@@ -6,18 +6,35 @@ from pymongo import MongoClient
 import struct
 from struct import unpack
 
-UDP_IP = "192.168.1.100"
 UDP_PORT = 5005
 
 client = MongoClient()
 db = client.mydb
 
-sock = socket.socket(socket.AF_INET, # Internet
-                     socket.SOCK_DGRAM) # UDP
-sock.bind((UDP_IP, UDP_PORT))
+#sock = socket.socket()
+sock = socket.socket(socket.AF_INET,
+                     socket.SOCK_DGRAM)
+sock.bind(('',UDP_PORT))
 
+#sock.listen(5)
+
+unpacker = struct.Struct('f')
+
+#while True:
+   # Establish connection with client.
+#   c, addr = sock.accept()     
+#   print ('Got connection from', addr)
+
+#   data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+#   test = unpacker.unpack(data)
+#   db.testData.update({ "_id": 1}, {'$push': { "x": {'$each': test}}}, True)
+#   print ("received message:", test)
+    
+   # Close the connection with the client
+#   c.close()
+   
 while True:
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-    test = unpack('1B', data)
+    test = unpacker.unpack(data)
     db.testData.update({ "_id": 1}, {'$push': { "x": {'$each': test}}}, True)
     print ("received message:", test)
