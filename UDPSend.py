@@ -11,7 +11,6 @@ UDP_PORT = 5005
 
 Fs = 1200          #Sampling Frequency
 T = 1/Fs            #Sample Times
-#L = 100*(Fs/60)     #Length of Signal
 L = 1000
 
 print ("UDP target IP:", UDP_IP)

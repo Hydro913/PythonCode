@@ -20,19 +20,7 @@ sock.bind(('',UDP_PORT))
 
 unpacker = struct.Struct('f')
 
-#while True:
-   # Establish connection with client.
-#   c, addr = sock.accept()     
-#   print ('Got connection from', addr)
 
-#   data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-#   test = unpacker.unpack(data)
-#   db.testData.update({ "_id": 1}, {'$push': { "x": {'$each': test}}}, True)
-#   print ("received message:", test)
-    
-   # Close the connection with the client
-#   c.close()
-   
 while True:
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
     test = unpacker.unpack(data)

@@ -1,11 +1,9 @@
 #!/usr/local/bin/python3
 
 from numpy.fft import fft
-from numpy import array, log10
-from scipy import arange
+from numpy import array, log10, arange
 import pymongo
 from pymongo import MongoClient
-#import json
 
 client = MongoClient()
 db = client.mydb
@@ -33,11 +31,6 @@ YdB = YdB - max(YdB)
 
 print( ' '.join("%5.3f" % g for g in frq ))
 print( ' '.join("%5.3f" % f for f in YdB ))
-#L = len(frq)
-#b = list(YdB)
-#c = list(frq)
 
-#obj = {'Length': L, 'Freq': c, 'FT': b}
-#print (json.dumps(obj))
 
 
